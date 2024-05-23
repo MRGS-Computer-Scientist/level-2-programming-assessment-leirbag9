@@ -1,6 +1,3 @@
-from tkinter import*
-window = Tk()
-window.geometry("500x500")
-window.title("windoe")
+from App import * 
 
-window.mainloop()
+app = App()
