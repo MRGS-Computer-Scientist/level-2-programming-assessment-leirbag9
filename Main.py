@@ -1,3 +1,3 @@
-from App import * 
+from App import *
 
 app = App()
