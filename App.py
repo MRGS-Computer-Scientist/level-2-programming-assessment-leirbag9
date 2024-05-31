@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from app_settings import *
+
 w_width = 500
 w_height = 800
 bg_colour = "#E7DDFF"
@@ -11,6 +11,7 @@ class App:
         self.window.geometry(str(w_width) + "x" + str(w_height))
         self.window.title("window")
 
+        # Define self.home_frame first
         self.home_frame = Frame(self.window, background='gray', width=w_width, height=(w_height-200))
         self.home_frame.pack()
 
