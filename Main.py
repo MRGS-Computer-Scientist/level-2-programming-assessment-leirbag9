@@ -1,4 +1,4 @@
-from app import *
+from App import *
 
 if __name__ == "__main__":
     app_instance = App()
