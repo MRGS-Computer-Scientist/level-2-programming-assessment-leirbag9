@@ -12,7 +12,7 @@ title_font = ("MS PGothic", 30, "bold")
 class App:
     def __init__(self):
         self.window = Tk()
-        self.window.geometry("500x800")
+        self.window.geometry("500x580")
         self.window.title("window")
 
         # Define self.home_frame first
@@ -23,13 +23,13 @@ class App:
         image = Image.open("imgs/Book.png")
         photo = ImageTk.PhotoImage(image)
 
-        # Create the label with the image in self.home_frame
+       # Create the label with the image in self.home_frame
         bg_image = Label(self.home_frame, image=photo)
         bg_image.image = photo  # Keep a reference to the image to prevent garbage collection
         bg_image.grid(row=0, column=0)
 
-        self.top_frame = Frame(self.window, background='white', width=500, height=200)
-        self.top_frame.grid(row=1, column=0, sticky="ew")
+        #self.top_frame = Frame(self.window, background='white', width=500, height=200)
+        #self.top_frame.grid(row=1, column=0, sticky="ew")
 
         ## Main ##
         self.main_frame = Frame(self.window, background=bg_colour, width=500, height=(w_height-200))
@@ -49,7 +49,7 @@ class App:
         self.new_item.grid(row=2, column=0, pady=(5, 20))
         ####LIST END####
 
-        self.bottom_frame = Frame(self.window, background=bg_colour, width=500, height=150)
+        self.bottom_frame = Frame(self.window, background="orange", width=500, height=150)
         self.bottom_frame.grid(row=3, column=0, sticky="ew")
 
         self.home_button = Button(self.bottom_frame, text="Home", height=2, width=5, bg='white')
