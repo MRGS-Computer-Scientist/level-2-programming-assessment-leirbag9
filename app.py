@@ -56,8 +56,8 @@ class App:
         self.home_button = Button(self.bottom_frame, text="Home", height=2, width=5, bg='white', command=self.show_home_frame)
         self.home_button.grid(row=0, column=0, padx=10, pady=5)
 
-        self.back_button = Button(self.bottom_frame, text="list", height=2, width=5, bg='white', command=self.show_list_frame)
-        self.back_button.grid(row=0, column=1, padx=10, pady=5)
+        self.list_button = Button(self.bottom_frame, image=="imgs/bookshelf.png" , height=2, width=5, bg='white', command=self.show_list_frame)
+        self.list_button.grid(row=0, column=1, padx=10, pady=5)
 
         self.exit_button = Button(self.bottom_frame, text="exit", height=2, width=5, bg='red', command=self.exit)
         self.exit_button.grid(row=0, column=2, padx=100, pady=5)
