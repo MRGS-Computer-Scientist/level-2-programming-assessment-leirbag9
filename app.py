@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import simpledialog, messagebox
-
+from os import path
 w_width = 500
 w_height = 700
 bg_colour = "#FFFEBE"
@@ -19,10 +19,13 @@ class App:
         self.home_frame = Frame(self.window, background='gray', width=w_width, height=(w_height-200))
         self.home_frame.grid(row=0, column=0)
 
-        # Load the image
+        # Define Images
         image = Image.open("imgs/Better_book.png")
         New_image = image.resize((200, 150))
         photo = ImageTk.PhotoImage(New_image)
+        #Button for list frame#
+        dirname = path.dirname(__file__)
+        self.basketball_filename = path.join(dirname, r'C:\Users\21123\github-classroom\MRGS-Computer-Scientist\level-2-programming-assessment-leirbag9\imgs\bookshelf.png')
 
         # Create the label with the image in self.home_frame
         self.bg_image = Label(self.home_frame, image=photo)
@@ -56,7 +59,7 @@ class App:
         self.home_button = Button(self.bottom_frame, text="Home", height=2, width=5, bg='white', command=self.show_home_frame)
         self.home_button.grid(row=0, column=0, padx=10, pady=5)
 
-        self.list_button = Button(self.bottom_frame, image=="imgs/bookshelf.png" , height=2, width=5, bg='white', command=self.show_list_frame)
+        self.list_button = Button(self.bottom_frame, text= "list" , height=2, width=5, bg='white', command=self.show_list_frame)
         self.list_button.grid(row=0, column=1, padx=10, pady=5)
 
         self.exit_button = Button(self.bottom_frame, text="exit", height=2, width=5, bg='red', command=self.exit)
