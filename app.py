@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import simpledialog, messagebox
 from os import path
+
 w_width = 500
 w_height = 700
 bg_colour = "#FFFEBE"
@@ -12,7 +13,7 @@ title_font = ("MS PGothic", 30, "bold")
 class App:
     def __init__(self):
         self.window = Tk()
-        self.window.geometry("500x700")
+        self.window.geometry("500x720")
         self.window.title("window")
 
         # Define self.home_frame first
@@ -23,14 +24,12 @@ class App:
         image = Image.open("imgs/Better_book.png")
         New_image = image.resize((200, 150))
         photo = ImageTk.PhotoImage(New_image)
-        #Button for list frame#
-        dirname = path.dirname(__file__)
-        self.basketball_filename = path.join(dirname, r'C:\Users\21123\github-classroom\MRGS-Computer-Scientist\level-2-programming-assessment-leirbag9\imgs\bookshelf.png')
 
         # Create the label with the image in self.home_frame
         self.bg_image = Label(self.home_frame, image=photo)
         self.bg_image.image = photo  # Keep a reference to the image to prevent garbage collection
         self.bg_image.grid(row=0, column=0)
+
         ##TOP##
         self.top_frame = Frame(self.window, background=bg_colour, width=500, height=(w_height-200))
         self.top_frame.grid(row=2, column=0, sticky=N)
@@ -56,13 +55,27 @@ class App:
         self.bottom_frame = Frame(self.window, background="orange", width=500, height=150)
         self.bottom_frame.grid(row=3, column=0, sticky="ew")
 
-        self.home_button = Button(self.bottom_frame, text="Home", height=2, width=5, bg='white', command=self.show_home_frame)
+        # Load button images
+        home_image = Image.open("imgs/home_button.png")
+        home_image = home_image.resize((50, 50))
+        self.home_photo = ImageTk.PhotoImage(home_image)
+
+        list_image = Image.open("imgs/list_button.png")
+        list_image = list_image.resize((50, 50))
+        self.list_photo = ImageTk.PhotoImage(list_image)
+
+        exit_image = Image.open("imgs/exit_button.png")
+        exit_image = exit_image.resize((50, 50))
+        self.exit_photo = ImageTk.PhotoImage(exit_image)
+
+        # Buttons with images
+        self.home_button = Button(self.bottom_frame, image=self.home_photo, height=50, width=50, bg='white', command=self.show_home_frame)
         self.home_button.grid(row=0, column=0, padx=10, pady=5)
 
-        self.list_button = Button(self.bottom_frame, text= "list" , height=2, width=5, bg='white', command=self.show_list_frame)
+        self.list_button = Button(self.bottom_frame, image=self.list_photo, height=50, width=50, bg='white', command=self.show_list_frame)
         self.list_button.grid(row=0, column=1, padx=10, pady=5)
 
-        self.exit_button = Button(self.bottom_frame, text="exit", height=2, width=5, bg='red', command=self.exit)
+        self.exit_button = Button(self.bottom_frame, image=self.exit_photo, height=50, width=50, bg='red', command=self.exit)
         self.exit_button.grid(row=0, column=2, padx=100, pady=5)
 
     def add_new_item(self):
@@ -82,6 +95,3 @@ class App:
     def show_list_frame(self):
         self.home_frame.grid_remove()
         self.main_frame.grid()
-
-app = App()
-app.window.mainloop()
