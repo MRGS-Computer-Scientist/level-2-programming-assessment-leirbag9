@@ -50,6 +50,9 @@ class App:
 
         self.new_item = Button(self.list_frame, text="Add new item", command=self.add_new_item)
         self.new_item.grid(row=2, column=0, pady=(5, 20))
+
+        self.remove_item = Button(self.list_frame, text="Remove selected item", command=self.remove_selected_item)
+        self.remove_item.grid(row=3, column=0, pady=(5, 20))
         ####LIST END####
 
         self.bottom_frame = Frame(self.window, background="orange", width=500, height=150)
@@ -63,11 +66,7 @@ class App:
         list_image = Image.open("imgs/list_button.png")
         list_image = list_image.resize((50, 50))
         self.list_photo = ImageTk.PhotoImage(list_image)
-
-        exit_image = Image.open("imgs/exit_button.png")
-        exit_image = exit_image.resize((50, 50))
-        self.exit_photo = ImageTk.PhotoImage(exit_image)
-
+        
         # Buttons with images
         self.home_button = Button(self.bottom_frame, image=self.home_photo, height=50, width=50, bg='white', command=self.show_home_frame)
         self.home_button.grid(row=0, column=0, padx=10, pady=5)
@@ -75,13 +74,18 @@ class App:
         self.list_button = Button(self.bottom_frame, image=self.list_photo, height=50, width=50, bg='white', command=self.show_list_frame)
         self.list_button.grid(row=0, column=1, padx=10, pady=5)
 
-        self.exit_button = Button(self.bottom_frame, image=self.exit_photo, height=50, width=50, bg='red', command=self.exit)
-        self.exit_button.grid(row=0, column=2, padx=100, pady=5)
+        self.exit_button = Button(self.bottom_frame, text="EXIT", height=3, width=5, bg='red', command=self.exit)
+        self.exit_button.grid(row=0, column=2, padx=80, pady=5)
 
     def add_new_item(self):
         user_input = simpledialog.askstring(title="Adding new item", prompt="What is your new item name:")
         if user_input:
             self.list_box.insert(0, user_input)
+
+    def remove_selected_item(self):
+        selected_items = self.list_box.curselection()
+        for item in selected_items:
+            self.list_box.delete(item)
         
     def exit(self):
         confirm_exit = messagebox.askquestion("askquestion", "Are you sure?")
@@ -95,3 +99,6 @@ class App:
     def show_list_frame(self):
         self.home_frame.grid_remove()
         self.main_frame.grid()
+
+app = App()
+app.window.mainloop()
