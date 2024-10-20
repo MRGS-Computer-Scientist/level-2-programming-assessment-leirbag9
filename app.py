@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 from tkinter import simpledialog, messagebox
 from os import path
 
-w_width = 500
+w_width = 501
 w_height = 700
 bg_colour = "#FFFEBE"
 
@@ -102,3 +102,5 @@ class App:
 
 app = App()
 app.window.mainloop()
+
+#TEST TO SEE IF I CAN PUSH#
